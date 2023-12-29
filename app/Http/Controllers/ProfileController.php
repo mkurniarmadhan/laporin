@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -14,6 +15,21 @@ class ProfileController extends Controller
     /**
      * Display the user's profile form.
      */
+
+
+    public function index()
+    {
+
+
+        $user = Auth::user();
+
+        $users = User::all();
+
+
+
+        return view('profile.index', compact('user', 'users'));
+    }
+
     public function edit(Request $request): View
     {
         return view('profile.edit', [
@@ -26,6 +42,7 @@ class ProfileController extends Controller
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
+
         $request->user()->fill($request->validated());
 
         if ($request->user()->isDirty('email')) {
@@ -34,7 +51,7 @@ class ProfileController extends Controller
 
         $request->user()->save();
 
-        return Redirect::route('profile.edit')->with('status', 'profile-updated');
+        return Redirect::route('profile.index')->with('status', 'profile-updated');
     }
 
     /**
@@ -56,5 +73,13 @@ class ProfileController extends Controller
         $request->session()->regenerateToken();
 
         return Redirect::to('/');
+    }
+    public function isAdmin(Request $request, User $user)
+    {
+
+        $user->is_admin =            $request->is_admin;
+        $user->save();
+
+        return back();
     }
 }
