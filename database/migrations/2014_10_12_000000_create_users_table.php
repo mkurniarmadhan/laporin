@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('no_telpon');
             $table->text('alamat');
-            $table->boolean('is_admin')->default(false);
+            $table->enum('is_admin', ['superadmin', 'admin', 'user'])->default('user');
             $table->rememberToken();
             $table->timestamps();
         });

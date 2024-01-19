@@ -8,6 +8,7 @@
     <title>Layanan Aduan Masyarakat</title>
     <meta content="siapmas" name="description">
     <meta content="siapmas" name="keywords">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 
     <!-- Favicons -->
     <link href="{{ asset('assets/') }}/img/favicon.png" rel="icon">
@@ -30,14 +31,6 @@
 
     <!-- Template Main CSS File -->
     <link href="{{ asset('assets/') }}/css/style.css" rel="stylesheet">
-
-    <!-- =======================================================
-  * Template Name: NiceAdmin
-  * Updated: Nov 17 2023 with Bootstrap v5.3.2
-  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
 </head>
 
 

@@ -26,6 +26,7 @@ return new class extends Migration
             $table->text('lampiran')->default(null)->nullable();
             $table->boolean('status')->default(false);
             $table->text('tanggapan')->nullable();
+            $table->boolean('publish')->default(false);
             $table->timestamps();
         });
     }

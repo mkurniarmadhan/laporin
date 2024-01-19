@@ -24,7 +24,7 @@ class LaporanController extends Controller
         $laporans = Laporan::where('user_id', $user->id)->get();
 
         //jika user adalah admin tampilkan semua data laporan
-        if ($user->is_admin)   $laporans = Laporan::ofType(request('q'))->get();
+        if ($user->is_admin == 'superadmin' || $user->is_admin == 'admin')   $laporans = Laporan::ofType(request('q'))->get();
 
         return view('admin.laporan.index', compact('laporans'));
     }

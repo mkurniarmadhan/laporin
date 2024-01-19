@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 
     <title>Layanan Aduan Masyarakat</title>
     <meta content="siapmas" name="description">
@@ -31,13 +32,7 @@
     <!-- Template Main CSS File -->
     <link href="{{ asset('assets/') }}/css/style.css" rel="stylesheet">
 
-    <!-- =======================================================
-  * Template Name: NiceAdmin
-  * Updated: Nov 17 2023 with Bootstrap v5.3.2
-  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+
 </head>
 
 

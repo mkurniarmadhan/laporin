@@ -1,5 +1,6 @@
 <x-applayout>
 
+
     <section class="section  dashboard">
         <div class="row">
             <div class="col-lg-8">
@@ -197,16 +198,24 @@
                     <div class="card-body pb-0">
                         <h5 class="card-title">Berita </h5>
 
-                        <div class="news">
-                            <div class="post-item clearfix">
-                                <img src="#" alt="">
-                                <h4><a href="#">Laporan </a></h4>
-                                <p>Laporan yang di publish
-                                </p>
+
+                        @forelse ($beritas as $berita)
+                            <div class="news">
+                                <div class="post-item clearfix">
+                                    <img src="{{ $berita->foto }}" alt="">
+                                    <h4><a href="{{ $berita->link }}">{{ $berita->judul }} </a></h4>
+                                    <p>{{ $berita->created_at }}
+                                    </p>
+                                </div>
+
+
                             </div>
+                        @empty
+                            <p>Berita masih kosong</p>
+                        @endforelse
 
 
-                        </div><!-- End sidebar recent posts-->
+
 
                     </div>
                 </div>

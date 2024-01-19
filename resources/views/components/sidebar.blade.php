@@ -29,7 +29,7 @@
                 </li>
 
 
-                @if (Auth::user()->is_admin)
+                @if (Auth::user()->is_admin == 'superadmin')
                     <li>
                         <a href="{{ route('kategori-laporan.index') }}"
                             class=" {{ Route::is('kategori-laporan.index') ? 'active' : '' }}">
@@ -53,6 +53,19 @@
                     <span>User Management</span>
                 @else
                     <span>Profile</span>
+                @endif
+
+            </a>
+        </li><!-- End Profile Page Nav -->
+
+        <li class="nav-item">
+            <a class="nav-link  {{ Route::is('berita.index') ? '' : 'collapsed' }}"
+                href="{{ route('berita.index') }}">
+                <i class="bi bi-person"></i>
+                @if (Auth::user()->is_admin)
+                    <span>Berita </span>
+                @else
+                    <span>Berita</span>
                 @endif
 
             </a>

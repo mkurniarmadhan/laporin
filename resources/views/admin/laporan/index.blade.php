@@ -3,7 +3,7 @@
 
 
     <x-pagetitle title='Laporan'>
-        {{-- {{ Breadcrumbs::render('pelapor.index') }} --}}
+
     </x-pagetitle>
     <section class="section">
         <div class="row">
@@ -15,12 +15,12 @@
                         <!-- Table with stripped rows -->
                         <p>
 
-                            @if (!Auth::user()->is_admin)
-                                <a href="{{ route('laporan.create') }}" class="btn btn-primary">Buat Laporan</a>
-                            @else
+                            @if (Auth::user()->is_admin == 'superadmin' || Auth::user()->is_admin == 'admin')
                                 <a href="{{ route('laporan.index') }}" class="btn btn-primary">Semua Laporan</a>
                                 <a href="{{ route('laporan.index') }}?q=0" class="btn btn-warning">Laporan Belum Di
                                     tinjau
+                                @else
+                                    <a href="{{ route('laporan.create') }}" class="btn btn-primary">Buat Laporan</a>
                             @endif
 
                             </a>

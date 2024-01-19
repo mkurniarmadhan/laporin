@@ -97,7 +97,8 @@
                     @endguest
 
 
-                    @if (Auth::user()->is_admin == 1)
+
+                    @if (Auth::user()->is_admin == 'superadmin' || Auth::user()->is_admin == 'admin')
                         <div class="col-12">
                             <div class="card recent-sales overflow-auto">
 
@@ -149,10 +150,18 @@
                             </div>
                         </div>
                     @else
-                        <h1>
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body pt-3">
+                                    <div class="list-group">
+
+                                        <div id="data-s"></div>
 
 
-                        </h1>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     @endif
 
 
@@ -246,6 +255,58 @@
             $(document).ready(function() {
                 $('.datatable').DataTable();
             });
+        </script>
+
+
+
+        <script>
+            $("#search").on('keyup', function() {
+                search()
+            });
+
+            search()
+
+            function search() {
+
+                let q = $("#search").val()
+
+                if (q.length <= 0) {
+                    $('#data-s').html("");
+                }
+                $.ajax({
+                    url: "/api/get-s?q=" + q,
+                    type: "GEt",
+
+                    success: function(data) {
+                        showData(data)
+                        console.log(data);
+                    },
+                    error: function(data) {}
+                });
+
+
+            }
+
+            function showData(res) {
+
+                let content = '';
+
+                for (let i = 0; i < res.laporan.length; i++) {
+                    content += `<a href="#" class="list-group-item list-group-item-action "
+                                            aria-current="true">
+                                            <div class="d-flex w-100 justify-content-between">
+                                            <h5 class="mb-1">${res.laporan[i].id}</h5>
+                                            <small>3 days ago</small>
+                                            </div>
+                                            <p class="mb-1">${res.laporan[i].isi}</p>
+                                            <small${res.laporan[i].created_at}</small>
+                                            </a>`
+                }
+
+                $('#data-s').html(content);
+
+
+            }
         </script>
     @endpush
 

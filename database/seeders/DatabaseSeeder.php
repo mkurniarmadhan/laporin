@@ -18,20 +18,22 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        User::create([
-            'nama' => 'amar',
-            'email' => 'amar@gmail.com',
-            'no_telpon' => '089694273720',
-            'alamat' => 'DIY',
-            'password' => bcrypt('amar123')
-        ]);
+
         User::create([
             'nama' => 'admin',
             'email' => 'admin@gmail.com',
             'no_telpon' => '089694273720',
             'alamat' => 'DIY',
             'password' => bcrypt('admin123'),
-            'is_admin' => true
+            'is_admin' => 'superadmin'
+        ]);
+        User::create([
+            'nama' => 'cesar',
+            'email' => 'cesar@gmail.com',
+            'no_telpon' => '089694273720',
+            'alamat' => 'DIY',
+            'password' => bcrypt('12345678'),
+            'is_admin' => 'user'
         ]);
 
 
@@ -57,7 +59,7 @@ class DatabaseSeeder extends Seeder
                 'user_id' => 1,
                 'kategori_id' => 1,
                 'judul' => 'text',
-                'isi' => '                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora distinctio, culpa excepturi quo eligendi deleniti fugiat, suscipit sunt mollitia sequi aliquam doloribus dolore aperiam optio ullam minus, earum ad nam?',
+                'isi' => ' aspal jalan?',
                 'status' => 1
             ]
         );

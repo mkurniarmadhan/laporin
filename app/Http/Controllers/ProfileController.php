@@ -23,7 +23,7 @@ class ProfileController extends Controller
 
         $user = Auth::user();
 
-        $users = User::all();
+        $users = User::where('is_admin', '!=', 'superadmin')->get();
 
 
 

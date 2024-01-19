@@ -9,6 +9,8 @@
     <meta content="siapmas" name="description">
     <meta content="siapmas" name="keywords">
 
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+
     <!-- Favicons -->
     <link href="{{ asset('assets/') }}/img/favicon.png" rel="icon">
     <link href="{{ asset('assets/') }}/img/apple-touch-icon.png" rel="apple-touch-icon">
@@ -34,13 +36,6 @@
     <!-- Template Main CSS File -->
     <link href="{{ asset('assets/') }}/css/style.css" rel="stylesheet">
 
-    <!-- =======================================================
-  * Template Name: NiceAdmin
-  * Updated: Nov 17 2023 with Bootstrap v5.3.2
-  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
 </head>
 
 <body class="  {{ Auth::check() ? '' : 'toggle-sidebar' }}">
@@ -57,12 +52,24 @@
             @auth
 
                 <i class="bi bi-list toggle-sidebar-btn"></i>
+                <div class="search-bar">
+                    <form class="search-form d-flex align-items-center">
+                        <input id="search" type="text" name="search" placeholder="cari apa ?"
+                            title="Enter search keyword">
+                        <button type="submit" title="Search">
+                            <i class="bi bi-search"></i>
+                        </button>
+                    </form>
+
+
+                </div>
+                <span class="btn btn-success" id="count-search"></span>
             @endauth
-        </div><!-- End Logo -->
+        </div>
 
 
 
-
+        {{-- klao udh login --}}
         @auth
             <nav class="header-nav ms-auto">
                 <ul class="d-flex align-items-center">
@@ -84,7 +91,7 @@
 
                         <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                             <li class="dropdown-header">
-                                <h6>{{ Auth::user()->nama }}</h6>
+                                <h6>{{ Auth::user()->is_admin }}</h6>
                                 <span>{{ Auth::user()->email }}</span>
                             </li>
                             <li>
@@ -122,6 +129,8 @@
             </nav>
         @endauth
 
+
+        {{-- kalo belum login --}}
         @guest
             <nav class="header-nav ms-auto me-3 d-flex">
 
@@ -184,6 +193,7 @@
 
     <!-- Template Main JS File -->
     <script src="{{ asset('assets/') }}/js/main.js"></script>
+
 
 
 
